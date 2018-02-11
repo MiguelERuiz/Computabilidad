@@ -115,5 +115,30 @@ el diagrama para representar el MT sería el siguiente:
 \section{Ejercicio 3.13}
 \subsection*{Solución}
 
+Para poder la solución del lenguaje decidido por la MT, se va analizar paso por
+paso el funcionamiento de la misma:
+
+Al principio, se desplaza a la derecha una casilla:
+\begin{itemize}
+\item Si el símbolo leído es \_, el lenguaje es aceptado.
+\item Si el símbolo es una d, se desplaza una casilla a la derecha.
+\item Si el símbolo es b o c, el lenguaje es rechazado.
+\item Si el símbolo leído es una a, escribe una d en dicha casilla
+  y vuelve a moverse una casilla hacia la derecha:
+  \begin{itemize}
+  \item Si el símbolo leído es a o d, se desplaza una casilla a la derecha.
+  \item Si el símbolo leído es c o \_, el lenguaje es rechazado.
+  \item Si el símbolo leído es una b, escribe una d en dicha casilla
+    y se desplaza una casilla a la derecha:
+    \begin{itemize}
+    \item Si el símbolo leído es b o d, se deplaza una casilla hacia la derecha.
+    \item Si el símbolo leído es a o \_, el lenguaje es rechazado.
+    \item Si el símbolo leído es c, se escribe una d en la casilla correspondiente
+      y se desplaza hacia la izquierda hasta encontrar un \_, y luego vuelve al
+      estado inicial.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+Por tanto, el lenguaje decidido es el conjunto \{a^nb^nc^n , n>= 0\}
 %% End document
 \end{document}
