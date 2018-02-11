@@ -1,0 +1,119 @@
+%% Preamble
+
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[utf8x]{inputenc}    % UTF-8 encoding
+\usepackage[spanish]{babel} % culturallydetermined typographical (and other) rules
+
+%% Fonts
+\usepackage{fourier}
+\usepackage[scaled=0.83]{helvet} %% Helvetica queda demasiado grande
+% \renewcommand{\ttdefault}{txtt}
+% \usepackage[scaled=0.9]{inconsolata}
+\usepackage[scaled=0.75]{beramono}
+
+\usepackage{hyperref}
+\usepackage{parskip}            % Paragraph allingment
+\usepackage{color}
+
+% Macros for comments and todos
+\usepackage[textsize=footnotesize, textwidth=2\marginparwidth]{todonotes}
+\newcommand{\mr}[1]{\todo{MR: #1}}
+
+%% Exercises
+\usepackage[printsolution=true]{exercises}
+
+%% Drawing Turing machines (automata in general)
+\usepackage{tikz, wasysym}
+\usetikzlibrary{automata,positioning}
+
+%% End Preamble
+
+%% Begin document
+
+\begin{document}
+
+\title{Tarea 1}
+\date{12 de Febrero de 2018}
+\maketitle
+\newpage
+
+
+
+\section{Ejercicio 3.2}
+\subsection*{Solución}
+
+\section{Ejercicio 3.3}
+\subsection*{Solución}
+
+Dado que la función de transición de la MT se representaría de la siguiente manera:
+
+\begin{center}
+  \begin{tabular}{| l | l | l | l |}
+    \hline
+    E. actual & Símbolo & Acción & E. nuevo \\ \hline
+    0 & \_ & $\rightarrow$ & 1 \\ \hline
+    1 & \_ & $\rightarrow$ & 2 \\ \hline
+    1 & a & $\rightarrow$ & 1 \\ \hline
+    2 & \_ & $\rightarrow$ & 2 \\ \hline
+    2 & a & $\rightarrow$ & 3 \\ \hline
+    3 & \_ & $\leftarrow$ & 9 \\ \hline
+    3 & a & $\rightarrow$ & 5 \\ \hline
+    4 & $\rhd$ & $\rightarrow$ & 10 \\ \hline
+    4 & * & $\leftarrow$ & 4 \\ \hline
+    5 & \_ & $\leftarrow$ & 6 \\ \hline
+    5 & a & $\rightarrow$ & 5 \\ \hline
+    6 & \_ & $\leftarrow$ & 7 \\ \hline
+    6 & a & \_ & 6 \\ \hline
+    7 & \_ & $\leftarrow$ & 8 \\ \hline
+    7 & a & $\leftarrow$ & 7 \\ \hline
+    8 & \_ & $\leftarrow$ & 8 \\ \hline
+    8 & a & \_ & 2 \\ \hline
+    9 & \_ & $\leftarrow$ & 4 \\ \hline
+    9 & a & \_ & 9 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+
+el diagrama para representar el MT sería el siguiente:
+
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+  \node[state, initial] (0) {$s$};
+  \node[state] (1) [right=of 0] {$q_0$};
+  \node[state] (2) [right=of 1] {$q_1$};
+  \node[state] (3) [below=of 2] {$q_2$};
+  \node[state] (5) [right=of 3] {$q_4$};
+  \node[state] (6) [right=of 5] {$q_5$};
+  \node[state] (7) [above=of 6] {$q_6$};
+  \node[state] (8) [above=of 7] {$q_7$};
+  \node[state] (9) [below=of 3] {$q_8$};
+  \node[state] (4) [left=of 9] {$q_3$};
+  \node[state, accepting] (10) [left=of 4] {$q_9$};
+  \path[->]
+  (0) edge node {$\_\:\_\:R$} (1)
+  (1) edge [loop above] node {$a\:a\:R$} (1)
+  (1) edge node {$\_\:\_\:R$} (2)
+  (2) edge node {$a\:a\:R$} (3)
+  (2) edge [loop above] node {$\_\:\_\:R$} (2)
+  (3) edge node {$a\:a\:R$} (5)
+  (5) edge [loop below] node {$a\:a\:R$} (5)
+  (5) edge node {$\_\:\_\:L$} (6)
+  (6) edge [loop right] node {$a\:\_$} (6)
+  (6) edge node {$\_\:\_\:L$} (7)
+  (7) edge [loop right] node {$a\:a\:L$} (7)
+  (7) edge node {$\_\:\_\:L$} (8)
+  (8) edge [loop right] node {$\_\:\_\:L$} (8)
+  (8) edge node {$a\:\_\:L$}(2)
+  (3) edge node {$\_\:\_\:L$} (9)
+  (9) edge [loop below] node {$a\:\_$} (9)
+  (9) edge node  {$\_\:\_\:L$} (4)
+  (4) edge [loop below] node {$*\:*\:L$}
+  (4) edge node {$\rhd\:\rhd\:R$} (10);
+\end{tikzpicture}
+
+\section{Ejercicio 3.13}
+\subsection*{Solución}
+
+%% End document
+\end{document}
