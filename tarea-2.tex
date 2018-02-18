@@ -86,4 +86,63 @@ diagrama.}
 \section*{Ejercicio 3.20}
 \subsection*{Solución}
 
+Para la primera parte del ejercicio, definimos la MT \textit{M_4} de la siguiente
+manera:
+
+$ M_4 = < K, \Sigma, s, H, \delta >$
+
+donde
+\begin{itemize}
+\item $ K = \{ s, q_0, q_1, q_2, q_3, q_4, q_5, q_6, q_7, h, e \}$
+\item $ \Sigma = \{\vartextvisiblespace, a, b, \rhd \}$
+\item s es el estado inicial
+\item $ H = \{ h, e \}$
+\item y su función de transción $\delta$ viene definida de la siguiente manera:
+  \begin{center}
+    \begin{tabular}{|| c c c c ||}
+      \hline
+      Estado & Símbolo & Acción & N. Estado \\ [0.5ex]
+      \hline\hline
+      s & \vartextvisiblespace & $\rightarrow$ & $q_0$ \\
+      \hline
+      $q_0$ & \vartextvisiblespace & $\rightarrow$ & $q_0$ \\
+      \hline
+      $q_0$ & a & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_0$ & c & $\rightarrow$ & $q_7$ \\
+      \hline
+      $q_1$ & a & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_1$ & c & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_1$ & b & $\rightarrow$ & $q_2$ \\
+      \hline
+      $q_2$ & b & $\rightarrow$ & $q_2$ \\
+      \hline
+      $q_2$ & \vartextvisiblespace & $\leftarrow$ & $q_3$ \\
+      \hline
+      $q_3$ & b & \vartextvisiblespace & $q_4$ \\
+      \hline
+      $q_4$ & b & $\leftarrow$ & $q_4$ \\
+      \hline
+      $q_4$ & c & $\leftarrow$ & $q_4$ \\
+      \hline
+      $q_4$ & \vartextvisiblespace & $\leftarrow$ & $q_4$ \\
+      \hline
+      $q_4$ & a & $\leftarrow$ & $q_5$ \\
+      \hline
+      $q_5$ & a & $\leftarrow$ & $q_5$ \\
+      \hline
+      $q_5$ & \vartextvisiblespace & $\rightarrow$ & $q_6$ \\
+      \hline
+      $q_6$ & a & \vartextvisiblespace & $q_0$ \\
+      \hline
+      $q_7$ & \vartextvisiblespace & \vartextvisiblespace & h \\
+      \hline
+      \_ & \_ & \vartextvisiblespace & e \\
+      \hline
+    \end{tabular}
+\end{center}
+\end{itemize}
+
 \end{document}
