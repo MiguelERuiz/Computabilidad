@@ -28,7 +28,7 @@
 
 
 %% Drawing diagrams
-\usepackage[all]{xy}
+\usepackage[all,cmtip]{xypic}
 
 %% visible white space
 \newcommand\vartextvisiblespace[1][.5em]{%
@@ -72,36 +72,16 @@ Un lenguaje es decidible o recursivo si $\exists \textit{M}$ que lo decide.
 
 Por tanto, para poder demostrar que el conjunto \textit{B} es decidible, tenemos
 que encontrar una MT \textit{M} que lo decida. La solución que propongo es la
-siguiente:
-\pagebreak
-
-%% \[
-%% \xymatrix{
-%%   >R \ar[r]^{m} \ar[d]^{x} \ar@/_/[drr]^{\vartextvisiblespace} & R_{\overline{m}} \ar[r]^{\vartextvisiblespace, x} & R \ar[r]^{n} \ar[d]^{\vartextvisiblespace,x} & R_{\overline{n}} \ar[r]^{\vartextvisiblespace, x} & L_{\overline{x}} x L_{\vartextvisiblespace} L_{\overline{x}} x L_{\rhd} \ar@/_5pc/[llll] \\
-%%   Y && N
-%% }
-%% \]
+siguiente: \footnote{La última acción sería retroceder hasta encontrar el
+carácter de inicio de la cinta $\rhd$, pero no he sido capaz de dibujar bien el
+diagrama.}
 
 \[
 \xymatrix{
-  >R \ar[rr]^(.33){m} \ar@/_/[drr]^{\vartextvisiblespace} & & R_{\vartextvisiblespace}L_{m}xL_{\vartextvisiblespace}L_{m}L_{\rhd} \ar@/_2pc/[ll] \\
-  &&N
+  >R \ar[rr]^{m} \ar[d]^{x} \ar@/_/[rrd]^{\vartextvisiblespace} & & R_{\vartextvisiblespace}R \ar[d]^{x,\vartextvisiblespace} \ar[rr]^(.33){n} && R_{\vartextvisiblespace}L_{n}xL_{\vartextvisiblespace}L_{m}xL_{\rhd} \ar@(ul,ur)[llll] \\
+  Y &&N
 }
 \]
-
-
-%% \[
-%% \xymatrix{
-%%   >R \ar[rr]^{\overline{a}} \ar@/_/[drr]^{b, \vartextvisiblespace } & & b \ar@/_2pc/[ll] \\
-%%   &&L_{\rhd}
-%% }
-%% \]
-
-
-%% \[
-%% \xymatrix{ Hom_{R}(A,B) \ar[r]^{F(f)} \ar@/_2pc/[rr]_{F(hf), F(g)}  & Hom_{R}(A,C) \ar[r]^{F(h)} & Hom_{R}(A,D)}
-%% \]
-
 
 \section*{Ejercicio 3.20}
 \subsection*{Solución}
