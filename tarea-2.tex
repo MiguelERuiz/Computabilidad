@@ -30,6 +30,9 @@
 %% Drawing diagrams
 \usepackage[all,cmtip]{xypic}
 
+%% Sets of numbers
+\usepackage{amssymb}
+
 %% visible white space
 \newcommand\vartextvisiblespace[1][.5em]{%
   \makebox[#1]{%
@@ -71,15 +74,20 @@ Un lenguaje es decidible o recursivo si $\exists \textit{M}$ que lo decide.
 
 
 Por tanto, para poder demostrar que el conjunto \textit{B} es decidible, tenemos
-que encontrar una MT \textit{M} que lo decida. La solución que propongo es la
-siguiente: \footnote{La última acción sería retroceder hasta encontrar el
-carácter de inicio de la cinta $\rhd$, pero no he sido capaz de dibujar bien el
-diagrama.}
+que encontrar una MT \textit{M} que lo decida. Antes de definir la MT, vamos a deducir
+qué números pertenecen al conjunto $B$. Dada la definicón matemática del conjunto, el
+primer número perteneciente a $B$ sería el número 10 en notación decimal, dado
+que todos los números por debajo de él (desde el 1 hasta el 9) son menores que él y su
+$c(m)$ es menor que $c(10)$. Por tanto, los números pertencientes a este conjunto son
+todas las potencias de 10 que pertencen al conjunto $\mathbb{N}$, el 1 excluído.
+
+Así pues, la MT que decide al conjunto $B$ sería:
+
 
 \[
 \xymatrix{
-  >R \ar[rr]^{m} \ar[d]^{x} \ar@/_/[rrd]^{\vartextvisiblespace} & & R_{\vartextvisiblespace}R \ar[d]^{x,\vartextvisiblespace} \ar[rr]^(.33){n} && R_{\vartextvisiblespace}L_{n}xL_{\vartextvisiblespace}L_{m}xL_{\rhd} \ar@(ul,ur)[llll] \\
-  Y &&N
+  >RR \ar[r]^{1} \ar[dr]^{\_} & R \ar[r]^{0} \ar[d]^{\_} & R \ar[ld]^{\_} \ar@(ur,ul)^{0} \ar[r]^{\vartextvisiblespace} & Y \\
+  & N
 }
 \]
 
@@ -98,6 +106,7 @@ donde
 \item s es el estado inicial
 \item $ H = \{ h, e \}$
 \item y su función de transción $\delta$ viene definida de la siguiente manera:
+  \hfill \break
   \begin{center}
     \begin{tabular}{|| c c c c ||}
       \hline
@@ -145,6 +154,7 @@ donde
 \end{center}
 \end{itemize}
 
+\hfill \break
 Para la segunda parte del ejercicio, definimos la MT $M_2$ de la
 siguiente manera:
 
