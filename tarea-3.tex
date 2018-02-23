@@ -26,6 +26,12 @@
 \usepackage{listings}
 \lstset{basicstyle=\tt}
 
+%% Sets of numbers
+\usepackage{amssymb}
+
+%% Drawing diagrams
+\usepackage[all,cmtip]{xypic}
+
 %% End Preamble
 
 %% Begin document
@@ -63,5 +69,17 @@
 
 \section*{Ejercicio 5.17}
 \subsection*{Solución}
+La rutina del ejercicio calcula una función parcial, es decir, no está definida para todos
+los elementos del conjunto $\mathbb{N}$, dado que solo funciona para el número 0.
+
+La solución de una Máquina de Turing que calcule lo mismo que esta función sería la siguiente:
+
+\[
+\xymatrix{
+  >R \ar[rr]^{0} \ar[dr]^{\_} && L_\rhd \\
+  & M_* \ar@(dr,dl)
+}
+\]
+
 
 \end{document}
