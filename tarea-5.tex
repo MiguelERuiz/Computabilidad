@@ -71,18 +71,19 @@ tal y como se muestra a continuación.
 
 %% TODO: Preguntar a Damiano por la solución de este ejercicio
 Si tomamos la diagonal de la tabla, que sería otra función total de $\mathbb{N}$ a
-$\mathbb{N}$
+$\mathbb{N}$, podemos observar que esta fila no podría ser parte de la tabla,
+por tanto este conjunto no es enumerable.
 
 \section*{Ejercicio 8.9}
 \subsection*{Solución}
 \begin{lstlisting}[language=pascal]
   proc p(n:int) retunrs int{
-    var i:int, j:int;
     if (n+4 > 10 ^ 4-n < 1) then{
       return 0;
     }else{
       return n+8;
     }
+    var i:int, j:int;
     i:=0;
     j:=0;
     while(i<6) do{
