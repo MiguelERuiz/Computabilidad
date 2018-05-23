@@ -54,16 +54,43 @@ while. Por el contrario, si se entra en la rama else, la variable x tendrá asig
 el valor de i, y tampoco entrará dentro del bucle while ya que cualquier número
 entre 0 o menor que 0 no es mayor que 10.
 
-\section{Ejercicio 11.4}
+\section*{Ejercicio 11.4}
+\subsection*{Solución}
+$$[pos] [-] [pos] = [¿?]$$
+$$[pos] [-] [neg] = [pos]$$
+$$[neg] [-] [pos] = [neg]$$
+$$[neg] [-] [neg] = [¿?]$$
+$$[¿?] [-] [0] = [¿?]$$
+$$[0] [-] [¿?] = [¿?]$$
+
+\section*{Ejercicio 11.9}
 \subsection*{Solución}
 
-\section{Ejercicio 11.9}
-\subsection*{Solución}
+$$(2-1) * (5-5)$$
+$$[pos] [-] [pos] * [pos] [-] [pos]$$
+$$[¿?] [*] [¿?]$$
+$$[¿?]$$
 
-\section{Ejercicio 11.11}
+\section*{Ejercicio 11.11}
 \subsection*{Solución}
+Para la operación aritmética aproximada del cuadrado [2] se han definido los
+siguientes casos:
+$$[pos]^[2] = [pos]
+[neg]^[2] = [pos]
+[0]^[2] = [0]
+[¿?]^[2] = [¿?]
 
-\section{Ejercicio 11.12}
+Por tanto, la solución para este ejercicio sería:
+
+[ns-neg][+]([n-0]^[2][+][pos])
+[n-neg][+]([pos]+[pos])
+[n-neg][+][pos]
+[pos]
+
+\section*{Ejercicio 11.12}
 \subsection*{Solución}
-
+([n-neg][−][n-pos])[+][¿?]^[2]
+            [pos][+][¿?]^[2]
+            [pos][+][¿?]
+            [¿?]
 \end{document}
