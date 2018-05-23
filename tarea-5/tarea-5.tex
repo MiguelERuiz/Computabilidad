@@ -1,0 +1,99 @@
+%% Preamble
+
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[utf8x]{inputenc}    % UTF-8 encoding
+\usepackage[spanish]{babel} % culturallydetermined typographical (and other) rules
+
+%% Fonts
+\usepackage{fourier}
+\usepackage[scaled=0.83]{helvet} %% Helvetica queda demasiado grande
+% \renewcommand{\ttdefault}{txtt}
+% \usepackage[scaled=0.9]{inconsolata}
+\usepackage[scaled=0.75]{beramono}
+
+\usepackage{hyperref}
+\usepackage{parskip}            % Paragraph allingment
+\usepackage{color}
+
+% Macros for comments and todos
+\usepackage[textsize=footnotesize, textwidth=2\marginparwidth]{todonotes}
+\newcommand{\mr}[1]{\todo{MR: #1}}
+
+%% Exercises
+\usepackage[printsolution=true]{exercises}
+
+%% Math symbols
+\usepackage{amssymb}
+
+%% Code
+\usepackage{listings}
+\lstset{basicstyle=\tt}
+
+%% Math sets
+\usepackage{amssymb}
+
+%% End Preamble
+
+%% Begin document
+
+\begin{document}
+
+\title{Tarea 5}
+\date{\today}
+\maketitle
+\newpage
+
+\section*{Ejercicio 7.9}
+\subsection*{Solución}
+La solución que he seguido ha sido utilizar el método de la diagonalización:
+partiendo en la siguiente tabla, en donde las columnas estarían los números
+naturales desde 0 a n y en las filas estarían las funciones desde f(0) a f(n)
+tal y como se muestra a continuación.
+
+\begin{center}
+  \begin{tabular}{| c | c c c c c c c c c c c|}
+    \hline
+    \, & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \ldots \\ \hline
+    f(0) & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \ldots \\ \hline
+    f(1) & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \ldots \\ \hline
+    f(2) & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \ldots \\ \hline
+    f(3) & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & \ldots \\ \hline
+    f(4) & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & \ldots \\ \hline
+    f(5) & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & \ldots \\ \hline
+    f(6) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & \ldots \\ \hline
+    f(7) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & \ldots \\ \hline
+    f(8) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & \ldots \\ \hline
+    f(9) & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & \ldots \\ \hline
+    \ldots
+    
+  \end{tabular}
+\end{center}
+
+%% TODO: Preguntar a Damiano por la solución de este ejercicio
+Si tomamos la diagonal de la tabla, que sería otra función total de $\mathbb{N}$ a
+$\mathbb{N}$, podemos observar que esta fila no podría ser parte de la tabla,
+por tanto este conjunto no es enumerable.
+
+\newpage
+
+\section*{Ejercicio 8.9}
+\subsection*{Solución}
+\begin{lstlisting}[language=pascal]
+  proc p(n:int) retunrs int{
+    if (n+4 > 10 ^ 4-n < 1) then{
+      return 0;
+    }
+    if (n+4 > 10) then{
+      return n+8;
+    }
+    var i:int, j:int;
+    i:=0;
+    j:=0;
+    while(i<6) do{
+      j:=j+n;
+      i:=i+1;
+    }
+    return j;
+  }
+\end{lstlisting}
+\end{document}
