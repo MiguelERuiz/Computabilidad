@@ -29,8 +29,8 @@
 \usepackage{listings}
 \lstset{basicstyle=\tt}
 
-%% Math sets
-\usepackage{amssymb}
+%% Math equations
+\usepackage{amsmath}
 
 %% End Preamble
 
@@ -75,22 +75,28 @@ $$[¿?]$$
 \subsection*{Solución}
 Para la operación aritmética aproximada del cuadrado [2] se han definido los
 siguientes casos:
-$$[pos]^[2] = [pos]
-[neg]^[2] = [pos]
-[0]^[2] = [0]
-[¿?]^[2] = [¿?]
-
+\newline
+\begin{align*}
+  [pos]^{[2]} = [pos]\\
+  [neg]^{[2]} = [pos]\\
+  [0]^{[2]} = [0]\\
+  [¿?]^{[2]} = [¿?]
+\end{align*}
 Por tanto, la solución para este ejercicio sería:
-
-[ns-neg][+]([n-0]^[2][+][pos])
-[n-neg][+]([pos]+[pos])
-[n-neg][+][pos]
-[pos]
-
+\begin{align*}
+  [ns-neg][+]([n-0]^{[2]}[+][pos]) & = & [n-neg][+]([pos]+[pos])
+  \\
+  & = & [n-neg][+][pos]
+  \\
+  & = &[pos]
+\end{align*}
 \section*{Ejercicio 11.12}
 \subsection*{Solución}
-([n-neg][−][n-pos])[+][¿?]^[2]
-            [pos][+][¿?]^[2]
-            [pos][+][¿?]
-            [¿?]
+\begin{align*}
+  ([n-neg][−][n-pos])[+][¿?]^{[2]} & = & [pos][+][¿?]^{[2]}
+  \\
+  & = & [pos][+][¿?]
+  \\
+  & = & [¿?]
+\end{align*}
 \end{document}
