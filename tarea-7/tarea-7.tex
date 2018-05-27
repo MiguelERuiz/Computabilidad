@@ -52,7 +52,7 @@ se le asignará el valor de j, que es 10. Cuando se ejecute la línea 6, corresp
 a la condición del bucle while, ésta no se cumplirá y no se entrará dentro del bucle
 while. Por el contrario, si se entra en la rama else, la variable x tendrá asignada
 el valor de i, y tampoco entrará dentro del bucle while ya que cualquier número
-entre 0 o menor que 0 no es mayor que 10.
+que sea menor o igual que 0 no es mayor que 10.
 
 \section*{Ejercicio 11.4}
 \subsection*{Solución}
@@ -66,14 +66,19 @@ entre 0 o menor que 0 no es mayor que 10.
   [0] [-] [0] = [0]\\
   [pos] [-] [neg] = [pos]\\
   [neg] [-] [pos] = [neg]\\
+  [pos] [-] [0] = [pos]\\
+  [neg] [-] [0] = [neg]\\
+  [0] [-] [neg] = [pos]\\
+  [0] [-] [pos] = [neg]\\
   [neg] [-] [neg] = [¿?]\\
   [pos] [-] [pos] = [¿?]\\
   [¿?] [-] [0] = [¿?]\\
   [0] [-] [¿?] = [¿?]
 \end{align*}
-
+\newline
 \section*{Ejercicio 11.9}
 \subsection*{Solución}
+La solución a este ejercicio está hecha con mi solución al ejercicio 11.4:
 
 $$(2-1) * (5-5)$$
 $$[pos] [-] [pos] * [pos] [-] [pos]$$
@@ -93,7 +98,7 @@ siguientes casos:
 \end{align*}
 Por tanto, la solución para este ejercicio sería:
 \begin{align*}
-  [ns-neg][+]([n-0]^{[2]}[+][pos]) & = & [n-neg][+]([pos]+[pos])
+  [n-neg][+]([n-0]^{[2]}[+][pos]) & = & [n-neg][+]([pos]+[pos])
   \\
   & = & [n-neg][+][pos]
   \\
@@ -102,9 +107,9 @@ Por tanto, la solución para este ejercicio sería:
 \section*{Ejercicio 11.12}
 \subsection*{Solución}
 \begin{align*}
-  ([n-neg][−][n-pos])[+][¿?]^{[2]} & = & [pos][+][¿?]^{[2]}
+  ([n-neg][−][n-pos])[+][¿?]^{[2]} & = & [¿?][+][¿?]^{[2]}
   \\
-  & = & [pos][+][¿?]
+  & = & [¿?][+][¿?]
   \\
   & = & [¿?]
 \end{align*}
