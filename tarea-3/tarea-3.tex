@@ -1,0 +1,85 @@
+%% Preamble
+
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[utf8x]{inputenc}    % UTF-8 encoding
+\usepackage[spanish]{babel} % culturallydetermined typographical (and other) rules
+
+%% Fonts
+\usepackage{fourier}
+\usepackage[scaled=0.83]{helvet} %% Helvetica queda demasiado grande
+% \renewcommand{\ttdefault}{txtt}
+% \usepackage[scaled=0.9]{inconsolata}
+\usepackage[scaled=0.75]{beramono}
+
+\usepackage{hyperref}
+\usepackage{parskip}            % Paragraph allingment
+\usepackage{color}
+
+% Macros for comments and todos
+\usepackage[textsize=footnotesize, textwidth=2\marginparwidth]{todonotes}
+\newcommand{\mr}[1]{\todo{MR: #1}}
+
+%% Exercises
+\usepackage[printsolution=true]{exercises}
+
+%% Code
+\usepackage{listings}
+\lstset{basicstyle=\tt}
+
+%% Sets of numbers
+\usepackage{amssymb}
+
+%% Drawing diagrams
+\usepackage[all,cmtip]{xypic}
+
+%% End Preamble
+
+%% Begin document
+
+\begin{document}
+
+\title{Tarea 3}
+\date{23 de Febrero de 2018}
+\maketitle
+\newpage
+
+
+
+\section*{Ejercicio 5.2}
+\subsection*{Solución}
+\begin{lstlisting}[language=pascal]
+  proc fibonacci(x : int) returns int{
+    if (x<=1) then return x;
+    var res: int;
+    var resAnterior: int;
+    var i: int;
+    var n: int;
+    n = x-1;
+    res = 1;
+    for i = 2 to n do {
+      var temp: int;
+      temp = res;
+      res = res + resAnterior;
+      resAnterior = temp;
+    }
+    return res;
+  }
+\end{lstlisting}
+
+
+\section*{Ejercicio 5.17}
+\subsection*{Solución}
+La rutina del ejercicio calcula una función parcial, es decir, no está definida para todos
+los elementos del conjunto $\mathbb{N}$, dado que solo funciona para el número 0.
+
+La solución de una Máquina de Turing que calcule lo mismo que esta función sería la siguiente:
+
+\[
+\xymatrix{
+  >R \ar[rr]^{0} \ar[dr]^{\_} && L_\rhd \\
+  & M_* \ar@(dr,dl)
+}
+\]
+
+
+\end{document}

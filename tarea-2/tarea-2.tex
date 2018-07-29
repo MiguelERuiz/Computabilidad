@@ -1,0 +1,219 @@
+%% Preamble
+
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[utf8x]{inputenc}    % UTF-8 encoding
+\usepackage[spanish]{babel} % culturallydetermined typographical (and other) rules
+
+%% Fonts
+\usepackage{fourier}
+\usepackage[scaled=0.83]{helvet} %% Helvetica queda demasiado grande
+% \renewcommand{\ttdefault}{txtt}
+% \usepackage[scaled=0.9]{inconsolata}
+\usepackage[scaled=0.75]{beramono}
+
+\usepackage{hyperref}
+\usepackage{parskip}            % Paragraph allingment
+\usepackage{color}
+
+% Macros for comments and todos
+\usepackage[textsize=footnotesize, textwidth=2\marginparwidth]{todonotes}
+\newcommand{\mr}[1]{\todo{MR: #1}}
+
+%% Exercises
+\usepackage[printsolution=true]{exercises}
+
+%% Drawing Turing machines (automata in general)
+\usepackage{tikz, wasysym}
+\usetikzlibrary{automata,positioning}
+
+
+%% Drawing diagrams
+\usepackage[all,cmtip]{xypic}
+
+%% Sets of numbers
+\usepackage{amssymb}
+
+%% visible white space
+\newcommand\vartextvisiblespace[1][.5em]{%
+  \makebox[#1]{%
+    \kern.07em
+    \vrule height.3ex
+    \hrulefill
+    \vrule height.3ex
+    \kern.07em
+  }% <-- don't forget this one!
+}
+
+%% End Preamble
+
+%% Begin document
+
+\begin{document}
+
+\title{Tarea 2}
+\date{18 de Febrero de 2018}
+\maketitle
+\newpage
+
+
+
+\section*{Ejercicio 3.15}
+\subsection*{Solución}
+
+
+Para saber si el conjunto enunciado es o no decidible, vamos a hacer uso de las
+deficiones que tienen que ver con definir un lenguaje:
+
+Una MT \textit{M} decide un lenguaje \textit{L} si $\forall x \in \Sigma^*:$
+\begin{itemize}
+  \item Si x $\in \textit{L}, \textit{M}$ termina en Y.
+  \item Si x $\notin \textit{L}, \textit{M}$ termina en N.
+\end{itemize}
+
+Un lenguaje es decidible o recursivo si $\exists \textit{M}$ que lo decide.
+
+
+Por tanto, para poder demostrar que el conjunto \textit{B} es decidible, tenemos
+que encontrar una MT \textit{M} que lo decida. Antes de definir la MT, vamos a deducir
+qué números pertenecen al conjunto $B$. Dada la definicón matemática del conjunto, el
+primer número perteneciente a $B$ sería el número 10 en notación decimal, dado
+que todos los números por debajo de él (desde el 1 hasta el 9) son menores que él y su
+$c(m)$ es menor que $c(10)$. Por tanto, los números pertencientes a este conjunto son
+todas las potencias de 10 que pertencen al conjunto $\mathbb{N}$, el 1 excluído.
+
+Así pues, la MT que decide al conjunto $B$ sería:
+
+
+\[
+\xymatrix{
+  >RR \ar[r]^{1} \ar[dr]^{\_} & R \ar[r]^{0} \ar[d]^{\_} & R \ar[ld]^{\_} \ar@(ur,ul)^{0} \ar[r]^{\vartextvisiblespace} & Y \\
+  & N
+}
+\]
+
+\section*{Ejercicio 3.20}
+\subsection*{Solución}
+
+Para la primera parte del ejercicio, definimos la MT $M_4$ de la siguiente
+manera:
+
+$ M_4 = < K, \Sigma, s, H, \delta >$
+
+donde
+\begin{itemize}
+\item $ K = \{ s, q_0, q_1, q_2, q_3, q_4, q_5, q_6, q_7, h, e \}$
+\item $ \Sigma = \{\vartextvisiblespace, a, b, c, \rhd \}$
+\item s es el estado inicial
+\item $ H = \{ h, e \}$
+\item y su función de transción $\delta$ viene definida de la siguiente manera:
+  \hfill \break
+  \begin{center}
+    \begin{tabular}{|| c c c c ||}
+      \hline
+      Estado & Símbolo & Acción & N. Estado \\ [0.5ex]
+      \hline\hline
+      s & \vartextvisiblespace & $\rightarrow$ & $q_0$ \\
+      \hline
+      $q_0$ & \vartextvisiblespace & $\rightarrow$ & $q_0$ \\
+      \hline
+      $q_0$ & a & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_0$ & c & $\rightarrow$ & $q_7$ \\
+      \hline
+      $q_1$ & a & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_1$ & c & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_1$ & b & $\rightarrow$ & $q_2$ \\
+      \hline
+      $q_2$ & b & $\rightarrow$ & $q_2$ \\
+      \hline
+      $q_2$ & \vartextvisiblespace & $\leftarrow$ & $q_3$ \\
+      \hline
+      $q_3$ & b & \vartextvisiblespace & $q_4$ \\
+      \hline
+      $q_4$ & b & $\leftarrow$ & $q_4$ \\
+      \hline
+      $q_4$ & c & $\leftarrow$ & $q_4$ \\
+      \hline
+      $q_4$ & \vartextvisiblespace & $\leftarrow$ & $q_4$ \\
+      \hline
+      $q_4$ & a & $\leftarrow$ & $q_5$ \\
+      \hline
+      $q_5$ & a & $\leftarrow$ & $q_5$ \\
+      \hline
+      $q_5$ & \vartextvisiblespace & $\rightarrow$ & $q_6$ \\
+      \hline
+      $q_6$ & a & \vartextvisiblespace & $q_0$ \\
+      \hline
+      $q_7$ & \vartextvisiblespace & \vartextvisiblespace & $h$ \\
+      \hline
+      \_ & \_ & \vartextvisiblespace & $e$ \\
+      \hline
+    \end{tabular}
+\end{center}
+\end{itemize}
+
+\hfill \break
+Para la segunda parte del ejercicio, definimos la MT $M_2$ de la
+siguiente manera:
+
+$ M_2 = < K, \Sigma, s, H, \delta >$
+
+donde
+
+\begin{itemize}
+\item $ K = \{ s, q_0, q_1, q_2, q_3, q_4, q_5, q_6, q_7, q_8, q_9, q_1_0, h, e \}$
+\item $ \Sigma = \{\vartextvisiblespace, a, \rhd \}$
+\item s es el estado inicial
+\item $ H = \{ h, e \}$
+\item y su función de transción $\delta$ viene definida de la siguiente manera:
+  \begin{center}
+    \begin{tabular}{|| c c c c ||}
+      \hline
+      Estado & Símbolo & Acción & N. Estado \\ [0.5ex]
+      \hline\hline
+      s & \vartextvisiblespace & $\rightarrow$ & $q_0$ \\
+      \hline
+      $q_0$ & \vartextvisiblespace & $\rightarrow$ & $q_8$ \\
+      \hline
+      $q_0$ & a & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_1$ & a & $\rightarrow$ & $q_1$ \\
+      \hline
+      $q_1$ & \vartextvisiblespace & $\rightarrow$ & $q_2$ \\
+      \hline
+      $q_2$ & a & $\rightarrow$ & $q_2$ \\
+      \hline
+      $q_2$ & \vartextvisiblespace & $\leftarrow$ &$q_3$ \\
+      \hline
+      $q_3$ & a & \vartextvisiblespace & $q_4$ \\
+      \hline
+      $q_4$ & \vartextvisiblespace & $\leftarrow$ & $q_5$ \\
+      \hline
+      $q_5$ & a & $\leftarrow$ & $q_5$ \\
+      \hline
+      $q_5$ & \vartextvisiblespace & $\leftarrow$ & $q_6$ \\
+      \hline
+      $q_6$ & a & $\leftarrow$ & $q_6$ \\
+      \hline
+      $q_6$ & \vartextvisiblespace & $\rightarrow$ & $q_7$ \\
+      \hline
+      $q_7$ & a & \vartextvisiblespace & $q_0$ \\
+      \hline
+      $q_8$ & \vartextvisiblespace & $\rightarrow$ & $q_9$ \\
+      \hline
+      $q_8$ & a & a & $q_0$ \\
+      \hline
+      $q_9$ & \vartextvisiblespace & $\rightarrow$ & $q_1_0$ \\
+      \hline
+      $q_1_0$ & \vartextvisiblespace & \vartextvisiblespace & $h$ \\
+      \hline
+      \_ & \_ & \vartextvisiblespace & $e$ \\
+      \hline
+    \end{tabular}
+\end{center}
+\end{itemize}
+
+
+\end{document}

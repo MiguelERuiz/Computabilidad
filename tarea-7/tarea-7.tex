@@ -1,0 +1,116 @@
+%% Preamble
+
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[utf8x]{inputenc}    % UTF-8 encoding
+\usepackage[spanish]{babel} % culturallydetermined typographical (and other) rules
+
+%% Fonts
+\usepackage{fourier}
+\usepackage[scaled=0.83]{helvet} %% Helvetica queda demasiado grande
+% \renewcommand{\ttdefault}{txtt}
+% \usepackage[scaled=0.9]{inconsolata}
+\usepackage[scaled=0.75]{beramono}
+
+\usepackage{hyperref}
+\usepackage{parskip}            % Paragraph allingment
+\usepackage{color}
+
+% Macros for comments and todos
+\usepackage[textsize=footnotesize, textwidth=2\marginparwidth]{todonotes}
+\newcommand{\mr}[1]{\todo{MR: #1}}
+
+%% Exercises
+\usepackage[printsolution=true]{exercises}
+
+%% Math symbols
+\usepackage{amssymb}
+
+%% Code
+\usepackage{listings}
+\lstset{basicstyle=\tt}
+
+%% Math equations
+\usepackage{amsmath}
+
+%% End Preamble
+
+%% Begin document
+
+\begin{document}
+
+\title{Tarea 7}
+\date{\today}
+\maketitle
+\newpage
+
+\section*{Ejercicio 10.11}
+\subsection*{Solución}
+
+La línea 7 es código muerto; para justificarlo hay que analizar la línea 5 que
+corresponde al if-then-else: si se cumple la condición del if, a la variable x
+se le asignará el valor de j, que es 10. Cuando se ejecute la línea 6, correspondiente
+a la condición del bucle while, ésta no se cumplirá y no se entrará dentro del bucle
+while. Por el contrario, si se entra en la rama else, la variable x tendrá asignada
+el valor de i, y tampoco entrará dentro del bucle while ya que cualquier número
+que sea menor o igual que 0 no es mayor que 10.
+
+\section*{Ejercicio 11.4}
+\subsection*{Solución}
+%% $$[pos] [-] [pos] = [¿?]$$
+%% $$[pos] [-] [neg] = [pos]$$
+%% $$[neg] [-] [pos] = [neg]$$
+%% $$[neg] [-] [neg] = [¿?]$$
+%% $$[¿?] [-] [0] = [¿?]$$
+%% $$[0] [-] [¿?] = [¿?]$$
+\begin{align*}
+  [0] [-] [0] = [0]\\
+  [pos] [-] [neg] = [pos]\\
+  [neg] [-] [pos] = [neg]\\
+  [pos] [-] [0] = [pos]\\
+  [neg] [-] [0] = [neg]\\
+  [0] [-] [neg] = [pos]\\
+  [0] [-] [pos] = [neg]\\
+  [neg] [-] [neg] = [¿?]\\
+  [pos] [-] [pos] = [¿?]\\
+  [¿?] [-] [0] = [¿?]\\
+  [0] [-] [¿?] = [¿?]
+\end{align*}
+\newline
+\section*{Ejercicio 11.9}
+\subsection*{Solución}
+La solución a este ejercicio está hecha con mi solución al ejercicio 11.4:
+
+$$(2-1) * (5-5)$$
+$$[pos] [-] [pos] * [pos] [-] [pos]$$
+$$[¿?] [*] [¿?]$$
+$$[¿?]$$
+
+\section*{Ejercicio 11.11}
+\subsection*{Solución}
+Para la operación aritmética aproximada del cuadrado [2] se han definido los
+siguientes casos:
+\newline
+\begin{align*}
+  [pos]^{[2]} = [pos]\\
+  [neg]^{[2]} = [pos]\\
+  [0]^{[2]} = [0]\\
+  [¿?]^{[2]} = [¿?]
+\end{align*}
+Por tanto, la solución para este ejercicio sería:
+\begin{align*}
+  [n-neg][+]([n-0]^{[2]}[+][pos]) & = & [n-neg][+]([pos]+[pos])
+  \\
+  & = & [n-neg][+][pos]
+  \\
+  & = &[pos]
+\end{align*}
+\section*{Ejercicio 11.12}
+\subsection*{Solución}
+\begin{align*}
+  ([n-neg][−][n-pos])[+][¿?]^{[2]} & = & [¿?][+][¿?]^{[2]}
+  \\
+  & = & [¿?][+][¿?]
+  \\
+  & = & [¿?]
+\end{align*}
+\end{document}

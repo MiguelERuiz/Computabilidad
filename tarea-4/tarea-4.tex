@@ -1,0 +1,72 @@
+%% Preamble
+
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage[utf8x]{inputenc}    % UTF-8 encoding
+\usepackage[spanish]{babel} % culturallydetermined typographical (and other) rules
+
+%% Fonts
+\usepackage{fourier}
+\usepackage[scaled=0.83]{helvet} %% Helvetica queda demasiado grande
+% \renewcommand{\ttdefault}{txtt}
+% \usepackage[scaled=0.9]{inconsolata}
+\usepackage[scaled=0.75]{beramono}
+
+\usepackage{hyperref}
+\usepackage{parskip}            % Paragraph allingment
+\usepackage{color}
+
+% Macros for comments and todos
+\usepackage[textsize=footnotesize, textwidth=2\marginparwidth]{todonotes}
+\newcommand{\mr}[1]{\todo{MR: #1}}
+
+%% Exercises
+\usepackage[printsolution=true]{exercises}
+
+%% Math symbols
+\usepackage{amssymb}
+%% End Preamble
+
+%% Begin document
+
+\begin{document}
+
+\title{Tarea 4 \\
+  \\
+  \large Un punto de vista que pone en duda la Tesis de Church}
+\date{8 de marzo de 2018}
+\maketitle
+%% \newpage
+
+El punto de vista que presento\footnote{\url{https://journals.openedition.org/philosophiascientiae/772}}
+es el de la profesora Carol E. Cleland, en el cual argumenta en contra de la
+Tesis de Church, partiendo de la definición de un procedimiento superior a las
+Máquinas de Turing (demoninados ``mundane procedures'') que tienen la capacidad
+de calcular funciones que no podría una MT. Con esto Cleland no quiere dar por
+falsa la tesis de Church, sino enseñar que los límites de la computación son
+físicos y no lógicos.
+
+Lo que distingue a los ``mundane procedures'' de las Máquinas de Turing es que se
+pueden aplicar a procesos físicos y devuelven resultados empíricos, y además, el
+resultado que devuelven es un resultado causal. Así pues, estos procedimientos
+solo pueden ejecutarse bajo unas ciertas condiciones físicas (un contexto físico
+tal y como se menciona en este resumen), por contra, tal y como argumenta Cleland,
+las Máquinas de Turing no devuelven resultados causales sino formales, y ese
+argumento le sirve para decir que la Tesis de Church no es válida, puesto
+que los ``mundane procedures'' calculan funciones que una Máquina de Turing no podría
+calcular.
+
+Un argumento que se da es que una Máquina de Turing no podría calcular la función
+identidad definida en el conjunto de los números reales:\\
+\begin{equation}
+  i \colon \mathbb{R} \to \mathbb{R}
+\end{equation}
+
+Partiendo de que haya una representación enumerable de números naturales para los
+números reales, una MT nunca dejaría de leer los números que lo componen y no podría
+devolver el número que se desea representar.
+
+
+Personalmente pienso que es una buena argumentación para poner en duda la veracidad
+de la Tesis de Church, pero las demostraciones que se dan son demasiado rebuscadas
+como para pensar que es un punto de vista correcto.
+\end{document}
