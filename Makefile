@@ -4,9 +4,6 @@ help:
 	@echo Usage: make [help] [clean]
 
 clean:
-	rm *.aux
-	rm *.dvi
-	rm *.log
-	rm *.out
+	find . -type f \( -name "*.aux" -o -name "*.dvi" -o -name "*.log" -o -name "*.out" -o -name "*.pdf" \) -delete
 
 .PHONY: default help clean
